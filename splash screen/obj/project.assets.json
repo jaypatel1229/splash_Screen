@@ -1694,24 +1694,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\meet.bhandari\\.nuget\\packages\\": {},
+    "C:\\Users\\jay.patel\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\meet.bhandari\\source\\repos\\splash screen\\splash screen\\splash screen.csproj",
+      "projectUniqueName": "C:\\Users\\jay.patel\\source\\repos\\splash-screen\\splash screen\\splash screen.csproj",
       "projectName": "splash screen",
-      "projectPath": "C:\\Users\\meet.bhandari\\source\\repos\\splash screen\\splash screen\\splash screen.csproj",
-      "packagesPath": "C:\\Users\\meet.bhandari\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\meet.bhandari\\source\\repos\\splash screen\\splash screen\\obj\\",
+      "projectPath": "C:\\Users\\jay.patel\\source\\repos\\splash-screen\\splash screen\\splash screen.csproj",
+      "packagesPath": "C:\\Users\\jay.patel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jay.patel\\source\\repos\\splash-screen\\splash screen\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\meet.bhandari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jay.patel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
