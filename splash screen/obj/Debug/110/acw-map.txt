@@ -1,6 +1,12 @@
+splash_screen.ForgotPass, splash screen;crc64a1b336229a9ba7c7.ForgotPass
+splash_screen.ForgotPass;crc64a1b336229a9ba7c7.ForgotPass
+splash_screen.ForgotPass;crc64a1b336229a9ba7c7.ForgotPass
 splash_screen.MainActivity, splash screen;crc64a1b336229a9ba7c7.MainActivity
 splash_screen.MainActivity;crc64a1b336229a9ba7c7.MainActivity
 splash_screen.MainActivity;crc64a1b336229a9ba7c7.MainActivity
+splash_screen.Register, splash screen;crc64a1b336229a9ba7c7.Register
+splash_screen.Register;crc64a1b336229a9ba7c7.Register
+splash_screen.Register;crc64a1b336229a9ba7c7.Register
 splash_screen.SplashActivity, splash screen;crc64a1b336229a9ba7c7.SplashActivity
 splash_screen.SplashActivity;crc64a1b336229a9ba7c7.SplashActivity
 splash_screen.SplashActivity;crc64a1b336229a9ba7c7.SplashActivity

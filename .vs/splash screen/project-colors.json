@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "275189bf-88f9-4d7b-bdfe-ed6da921382b": {
+      "ProjectGuid": "275189bf-88f9-4d7b-bdfe-ed6da921382b",
+      "DisplayName": "splash screen",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

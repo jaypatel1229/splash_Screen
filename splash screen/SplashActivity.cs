@@ -32,7 +32,7 @@ namespace splash_screen
 
         async Task SimulateStartup()
         {
-            await Task.Delay(TimeSpan.FromSeconds(8));
+            await Task.Delay(TimeSpan.FromSeconds(1          ));
             //StartActivity(new Intent(Application.Context, typeof(MainActivity)));
             Intent intent = new Intent(Application.Context, typeof(MainActivity));
             StartActivity(intent);
