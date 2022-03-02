@@ -14,14 +14,14 @@ using System.Text;
 
 namespace splash_screen
 {
-    [Activity(Label = "Register", Theme = "@style/AppTheme",MainLauncher =false)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme",MainLauncher =false)]
     
     public class Register : Activity
     {
-        TextView textRegister;
-        ImageView imageView1, imageView2;
-        EditText editText1, editText2, editText3, editText4;
-        Button button1;
+        TextView RegisterTextView;
+        ImageView facebookImageView, googleImageView;
+        EditText editNameOfUser, editEmail, editUserName, editPassword;
+        Button RegisterButton;
         Regex EmailRegex = new Regex(@"^[a-z]([\w\.\-]+)@([\w\-]+)((\.)+)com|edu|in|org|net$+");
         //Regex EmailRegex = new Regex(@"^[a-z]([\w]*[\w\.]*(?!\.)@gmail.com");
         Regex UserRegex = new Regex("^[a-z-A-Z- .]*$");
@@ -35,97 +35,84 @@ namespace splash_screen
 
             UIReferences();
             UIClick();
-            TextPaint paint = textRegister.Paint;
-            float width = paint.MeasureText(textRegister.Text);
-
-            int[] vs = new int[]{
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#28A2F2"),
-                        Color.ParseColor("#28A2F2"),
-                    };
-            Shader textShader = new LinearGradient(0, 0, width, textRegister.TextSize,
-                    vs, null, Shader.TileMode.Clamp);
-            textRegister.Paint.SetShader(textShader);
+            TextColor();
         }
 
         private void UIReferences()
         {
-            editText1 = FindViewById<EditText>(Resource.Id.loguser);
-            editText2 = FindViewById<EditText>(Resource.Id.emailtxt);
-            editText3 = FindViewById<EditText>(Resource.Id.username);
-            editText4 = FindViewById<EditText>(Resource.Id.passwordUser);
+            RegisterTextView = FindViewById<TextView>(Resource.Id.textViewRegister);   //Register TextView
 
-            imageView1 = FindViewById<ImageView>(Resource.Id.facebook1);
-            imageView2 = FindViewById<ImageView>(Resource.Id.google1);
+            editNameOfUser = FindViewById<EditText>(Resource.Id.editTextNameUser);     //EditText for Name Of User
+            editEmail = FindViewById<EditText>(Resource.Id.editTextEmail);             //EditText for Email
+            editUserName = FindViewById<EditText>(Resource.Id.editTextUserName);       //EditText for UserName
+            editPassword = FindViewById<EditText>(Resource.Id.editTextPassword);       //EditText for Password
 
-            button1 = FindViewById<Button>(Resource.Id.register);
+            facebookImageView = FindViewById<ImageView>(Resource.Id.imageViewFaceBook);  //ImageView For Facebook
+            googleImageView = FindViewById<ImageView>(Resource.Id.imageViewGoogle);      //imageView For 
 
-            textRegister = FindViewById<TextView>(Resource.Id.texRegister);
+            RegisterButton = FindViewById<Button>(Resource.Id.buttonRegister);          //Button for Register       
         }
-
         private void UIClick()
         {
-            imageView1.Click += facebook_Click;
-            imageView2.Click += google_Click;
+            facebookImageView.Click += facebook_Click;
+            googleImageView.Click += google_Click;
 
-            button1.Click += Register_Click;
+            RegisterButton.Click += Register_Click;
         }
 
         private void Register_Click(object sender, EventArgs e)
         {
-            if(editText1.Text == "" && editText2.Text == "" && editText3.Text == "" && editText4.Text == "")
+            if(editNameOfUser.Text == "" && editEmail.Text == "" && editUserName.Text == "" && editPassword.Text == "")
             {
                 Toast.MakeText(this, "Please Enter the Details", ToastLength.Short).Show();
-                editText1.Error = "Please Enter the Details";
-                editText2.Error = "Please Enter the Details";
-                editText3.Error = "Please Enter the Details";
-                editText4.Error = "Please Enter the Details";
+                editNameOfUser.Error = "Please Enter the Details";
+                editEmail.Error = "Please Enter the Details";
+                editUserName.Error = "Please Enter the Details";
+                editPassword.Error = "Please Enter the Details";
             }
-            else if(editText1.Text == "")
+            else if(editNameOfUser.Text == "")
             {
                 //Toast.MakeText(this, "Please Enter Name of User", ToastLength.Short).Show();
-                editText1.Error = "Please Enter Name of User";
+                editNameOfUser.Error = "Please Enter Name of User";
             }
-            else if(!ValidateUser(editText1.Text))
+            else if(!ValidateUser(editNameOfUser.Text))
             {
                 //Toast.MakeText(this, "You Can not write Number in Name", ToastLength.Long).Show();
-                editText1.Error = "You Can not write Number in Name";
+                editNameOfUser.Error = "You Can not write Number in Name";
             }
             //else if(editText2.Text == "" && PatternMatcher)
             //{
             //    Toast.MakeText(this, "Please Enter the Email", ToastLength.Short).Show();
             //}
-            else if(editText2.Text == "")
+            else if(editEmail.Text == "")
             {
                 //Toast.MakeText(this, "Please fill the Email", ToastLength.Short).Show();
-                editText2.Error = "Please fill the Email";
+                editEmail.Error = "Please fill the Email";
             }
-            else if(!ValidateEmail(editText2.Text))
+            else if(!ValidateEmail(editEmail.Text))
             {
                 //Toast.MakeText(this, "Please Enter Valid email", ToastLength.Short).Show();
-                editText2.Error = "Please Enter Valid email";
+                editEmail.Error = "Please Enter Valid email";
             }
-            else if (editText3.Text == "")
+            else if (editUserName.Text == "")
             {
                 //Toast.MakeText(this, "Please Enter Username", ToastLength.Short).Show();
-                editText3.Error = "Please Enter Username";
+                editUserName.Error = "Please Enter Username";
             }
-            else if (!ValidateUser(editText3.Text))
+            else if (!ValidateUser(editUserName.Text))
             {
                 //Toast.MakeText(this, "Number are Not Allow in Username", ToastLength.Long).Show();
-                editText3.Error = "Number are Not Allow in Username";
+                editUserName.Error = "Number are Not Allow in Username";
             }
-            else if(editText4.Text == "")
+            else if(editPassword.Text == "")
             {
                 //Toast.MakeText(this, "Please Entert Password", ToastLength.Long).Show();
-                editText4.Error = "Please Entert Password";
+                editPassword.Error = "Please Entert Password";
             }
-            else if (editText4.Text.Length < 8)
+            else if (editPassword.Text.Length < 8)
             {
                 //Toast.MakeText(this, "Password length is Under 8", ToastLength.Long).Show();
-                editText4.Error = "Password length is Under 8";
+                editPassword.Error = "Password length is Under 8";
             }
             else
             {
@@ -133,32 +120,7 @@ namespace splash_screen
                 Intent l = new Intent(this, typeof(MainActivity));
                 StartActivity(l);
                 Finish();
-            }
-          
-
-            //if (editText4.Text == "" && editText3.Text == "" && editText2.Text == "" && editText1.Text == "")
-            //{
-            //    Toast.MakeText(this, "Please Entert the Name of User", ToastLength.Long).Show();
-            //}
-            //else if (editText3.Text == "" && editText2.Text == "" && editText1.Text == "")
-            //{
-            //    Toast.MakeText(this, "Please Enter the Email", ToastLength.Short).Show();
-            //}
-            //else if (editText2.Text == "" && editText1.Text == "")
-            //{
-            //    Toast.MakeText(this, "Please Enter Username", ToastLength.Short).Show();
-            //}
-            //else if (editText1.Text == "")
-            //{
-            //    Toast.MakeText(this, "Please Enter the Password", ToastLength.Short).Show();
-            //}
-            //else
-            //{
-            //    Intent l = new Intent(this, typeof(MainActivity));
-            //    StartActivity(l);
-            //}
-
-            //Toast.MakeText(this, "Register Successfully", ToastLength.Short).Show();
+            }          
         }
         bool ValidateEmail(string email)
         {
@@ -174,15 +136,29 @@ namespace splash_screen
 
             return UserRegex.IsMatch(user);
         }
-
         private void facebook_Click(object sender, EventArgs e)
         {
             Toast.MakeText(this, "Are You Register With Facebook?",ToastLength.Short).Show();
         }
-
         private void google_Click(object sender, EventArgs e)
         {
             Toast.MakeText(this, "Are You Register With Google?", ToastLength.Short).Show();
+        }
+
+        private void TextColor()
+        {
+            TextPaint paint = RegisterTextView.Paint;
+            float width = paint.MeasureText(RegisterTextView.Text);
+
+            int[] vs = new int[]{
+                        Color.ParseColor("#5E07A6"),
+                        Color.ParseColor("#5E07A6"),
+                        Color.ParseColor("#5E07A6"),
+                        Color.ParseColor("#28A2F2"),
+                        Color.ParseColor("#28A2F2"),
+                    };
+            Shader textShader = new LinearGradient(0, 0, width, RegisterTextView.TextSize, vs, null, Shader.TileMode.Clamp);
+            RegisterTextView.Paint.SetShader(textShader);
         }
     }
 }

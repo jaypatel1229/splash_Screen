@@ -14,6 +14,7 @@ com.google.android.material.button.MaterialButton;obj\Debug\110\res\layout\regis
 corners;obj\Debug\110\res\drawable\drawable\gradient.xml
 corners;obj\Debug\110\res\drawable\drawable\shape.xml
 corners;obj\Debug\110\res\drawable\shape.xml
+dimen;obj\Debug\110\res\values\dimen.xml
 EditText;obj\Debug\110\res\layout\activity_main.xml
 EditText;obj\Debug\110\res\layout\forgotpass.xml
 EditText;obj\Debug\110\res\layout\register.xml
@@ -54,6 +55,7 @@ path;obj\Debug\110\res\drawable\ic_visibility.xml
 path;obj\Debug\110\res\drawable\ic_visibility_off.xml
 paths;C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;obj\Debug\110\res\values\colors.xml
+resources;obj\Debug\110\res\values\dimen.xml
 resources;obj\Debug\110\res\values\ic_launcher_background.xml
 resources;obj\Debug\110\res\values\strings.xml
 resources;obj\Debug\110\res\values\styles.xml

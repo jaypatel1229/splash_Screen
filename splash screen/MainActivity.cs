@@ -11,15 +11,14 @@ using System.Text.RegularExpressions;
 
 namespace splash_screen
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme",MainLauncher =false)]
     public class MainActivity : AppCompatActivity
-    {
-        EditText editText1,editText2;
-        TextView textView3, textView5, txtLogin;
-        Button button1,button2;
-        ImageView imageView1,imageView2;
+    {       
+        TextView createAcc,forgotPass,loginText;
+        EditText user_editText, password_editText;
+        Button loginButton,registerButton;
+        ImageView facebook_imageView,google_imageView;
         Regex UserRegex = new Regex("^[a-z-A-Z- ]*$");
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,80 +27,78 @@ namespace splash_screen
             SetContentView(Resource.Layout.activity_main);
             UIReferences();
             UIClick();
-            
-
-            TextPaint paint = txtLogin.Paint;
-            float width = paint.MeasureText(txtLogin.Text);
-
-            int[] vs = new int[]{
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#28A2F2"),
-                        Color.ParseColor("#28A2F2"),
-                    };
-            Shader textShader = new LinearGradient(0, 0, width, txtLogin.TextSize,
-                    vs, null, Shader.TileMode.Clamp);
-            txtLogin.Paint.SetShader(textShader);
+            TextColor();          
         }
 
         private void UIReferences()
         {
-            textView3 = FindViewById<TextView>(Resource.Id.textView4);
-            textView5 = FindViewById<TextView>(Resource.Id.forgotpass);
+            loginText = FindViewById<TextView>(Resource.Id.textViewLogin);                 //Login Text For Colors 
+
+            createAcc = FindViewById<TextView>(Resource.Id.textViewCreateAcc);             //TextView1
+            forgotPass = FindViewById<TextView>(Resource.Id.textViewForgotPass);           //TextView2
 
 
-            editText1 = FindViewById<EditText>(Resource.Id.loginUser);
-            editText2 = FindViewById<EditText>(Resource.Id.passwordUser);
-            button1 = FindViewById<Button>(Resource.Id.loginBtn);
-            button2 = FindViewById<Button>(Resource.Id.registerBtn);
+            user_editText = FindViewById<EditText>(Resource.Id.editTextUser);               //EditText1
+            password_editText = FindViewById<EditText>(Resource.Id.editTextPassword);       //EditText2
 
-            imageView1 = FindViewById<ImageView>(Resource.Id.facebook);
-            imageView2 = FindViewById<ImageView>(Resource.Id.google);
+            loginButton = FindViewById<Button>(Resource.Id.buttonLogin);                    //Login Button
+            registerButton = FindViewById<Button>(Resource.Id.buttonRegister);              //Register Buttton
 
-            txtLogin = FindViewById<TextView>(Resource.Id.textView1);
+            facebook_imageView = FindViewById<ImageView>(Resource.Id.imageViewfacebook);    //Facebook 
+            google_imageView = FindViewById<ImageView>(Resource.Id.imageViewgoogle);        //Google
         }
 
         private void UIClick()
         {
-            textView3.Click += Register_Click;
-            textView5.Click += Forgot_Click;
+            createAcc.Click += Register_Click;
+            forgotPass.Click += Forgot_Click;
 
-            button1.Click += Login_Click;
-            button2.Click += RegisterA_Click;
+            loginButton.Click += Login_Click;
+            registerButton.Click += RegisterA_Click;
 
-            imageView1.Click += facebook_Click;
-            imageView2.Click += google_Click;
+            facebook_imageView.Click += facebook_Click;
+            google_imageView.Click += google_Click;
         }
-       
+
+        private void Register_Click(object sender, EventArgs e)
+        {
+            Intent i = new Intent(this, typeof(Register));
+            StartActivity(i);
+        }
+
+        private void Forgot_Click(object sender, EventArgs e)
+        {
+            Intent a = new Intent(this, typeof(ForgotPass));
+            StartActivity(a);
+        }
 
         private void Login_Click(object sender, EventArgs e)
         {
-            if(editText1.Text == "" && editText2.Text == "")
+            if(user_editText.Text == "" && password_editText.Text == "")
             {
                 //Toast.MakeText(this, "Please Enter Details", ToastLength.Short).Show();
-                editText1.Error = "Please Enter Details";
-                editText2.Error = "Please Enter Details";
+                user_editText.Error = "Please Enter Details";
+                password_editText.Error = "Please Enter Details";
             }
-            else if(editText1.Text == "")
-            {                        
+            else if(user_editText.Text == "")
+            {
                 //Toast.MakeText(this, "Please Fill the Username", ToastLength.Short).Show();
-                editText1.Error = "Please Fill the Username";
+                user_editText.Error = "Please Fill the Username";
             }
-            else if (!ValidateUser(editText1.Text))
+            else if (!ValidateUser(user_editText.Text))
             {
                 //Toast.MakeText(this, "Number are Not Allow in Username", ToastLength.Short).Show();
-                editText1.Error = "Number are Not Allow in Username";
+                user_editText.Error = "Number are Not Allow in Username";
             }
-            else if(editText2.Text == "")
+            else if(password_editText.Text == "")
             {
                 //Toast.MakeText(this, "Please Fill the Password", ToastLength.Short).Show();
-                editText2.Error = "Please Fill the Password";
+                password_editText.Error = "Please Fill the Password";
             }
-            else if(editText2.Text.Length<8 )
+            else if(password_editText.Text.Length<8 )
             {
                 //Toast.MakeText(this, "Length of Password is Under 8", ToastLength.Short).Show();
-                editText2.Error = "Length of Password is Under 8";
+                password_editText.Error = "Length of Password is Under 8";
             }
             else
             {
@@ -116,7 +113,11 @@ namespace splash_screen
 
             return UserRegex.IsMatch(user);
         }
-
+        private void RegisterA_Click(object sender, EventArgs e)
+        {
+            Intent R = new Intent(this, typeof(Register));
+            StartActivity(R);
+        }
 
         private void facebook_Click(object sender, EventArgs e)
         {
@@ -128,22 +129,19 @@ namespace splash_screen
             Toast.MakeText(this, "Are You Login With Google?", ToastLength.Short).Show();
         }
 
-        private void RegisterA_Click(object sender, EventArgs e)
+        private void TextColor()
         {
-            Intent R = new Intent(this, typeof(Register));
-            StartActivity(R);
-        }
-
-        private void Forgot_Click(object sender, EventArgs e)
-        {
-            Intent a = new Intent(this, typeof(ForgotPass));
-            StartActivity(a);
-        }
-
-        private void Register_Click(object sender, EventArgs e)
-        {
-            Intent i = new Intent(this,typeof(Register));
-            StartActivity(i);
+            TextPaint paint = LoginText.Paint;
+            float width = paint.MeasureText(LoginText.Text);
+            int[] vs = new int[]{
+                        Color.ParseColor("#5E07A6"),
+                        Color.ParseColor("#5E07A6"),
+                        Color.ParseColor("#5E07A6"),
+                        Color.ParseColor("#28A2F2"),
+                        Color.ParseColor("#28A2F2"),
+                    };
+            Shader textShader = new LinearGradient(0, 0, width, LoginText.TextSize, vs, null, Shader.TileMode.Clamp);
+            LoginText.Paint.SetShader(textShader);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -152,5 +150,6 @@ namespace splash_screen
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+        
     }
 }

@@ -13,12 +13,12 @@ using System.Text;
 
 namespace splash_screen
 {
-    [Activity(Label = "ForgotPass")]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
     public class ForgotPass : Activity
     {
-        Button btn;
-        EditText editText1, editText2;
-        TextView txtForgot;
+        TextView forgotTextView;
+        EditText newPassEditText, confirmPassEditText;
+        Button DoneButton;    
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,33 +26,21 @@ namespace splash_screen
 
             UIReferences();
             UIClick();
-
-            TextPaint paint = txtForgot.Paint;
-            float width = paint.MeasureText(txtForgot.Text);
-
-            int[] vs = new int[]
-            {
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#5E07A6"),
-                        Color.ParseColor("#28A2F2"),
-                        Color.ParseColor("#28A2F2"),
-            };
-            Shader textShader = new LinearGradient(0, 0, width, txtForgot.TextSize,vs, null, Shader.TileMode.Clamp);
-            txtForgot.Paint.SetShader(textShader);
+            TextColor();
         }
         private void UIReferences()
         {
-            btn = FindViewById<Button>(Resource.Id.forgotPassword);
-            editText1 = FindViewById<EditText>(Resource.Id.newpass);
-            editText2 = FindViewById<EditText>(Resource.Id.confirmpass);
+            forgotTextView = FindViewById<TextView>(Resource.Id.textViewForgot);       //Forgot Textview 
 
-            txtForgot = FindViewById<TextView>(Resource.Id.forgottxt);
+            newPassEditText = FindViewById<EditText>(Resource.Id.editTextNewPass);     //New Password EditText
+            confirmPassEditText = FindViewById<EditText>(Resource.Id.editTextConfirmPass);  //Confirm Password EditText 
+
+            DoneButton = FindViewById<Button>(Resource.Id.buttonDone);                 //Done button to Reset Password
         }
 
         private void UIClick()
         {
-            btn.Click += Reset_Click;
+            DoneButton.Click += Reset_Click;
         }
 
         private void Reset_Click(object sender, EventArgs e)
@@ -63,20 +51,19 @@ namespace splash_screen
             //    editText1.Error = "Please fill the password and confirm password";
             //    editText2.Error = "Please fill the password and confirm password";
             //}
-            if (editText1.Text == "")
+            if (newPassEditText.Text == "")
             {
                 //Toast.MakeText(this, "Please Enter Password", ToastLength.Short).Show();
-                editText1.Error = "Please Enter Password";
+                newPassEditText.Error = "Please Enter Password";
             }
-            else if(editText2.Text == "")
+            else if(confirmPassEditText.Text == "")
             {
                 //Toast.MakeText(this, "Please Enter Confirm Password", ToastLength.Short).Show();
-                editText2.Error = "Please Enter Confirm Password";
+                confirmPassEditText.Error = "Please Enter Confirm Password";
             }
-            else if(editText1.Text != editText2.Text)
+            else if(newPassEditText.Text != confirmPassEditText.Text)
             {
-                Toast.MakeText(this, "Password and confirm Password Not Same", ToastLength.Short).Show();
-               
+                Toast.MakeText(this, "Password and confirm Password Not Same", ToastLength.Short).Show();               
             }
             else 
             {
@@ -84,8 +71,22 @@ namespace splash_screen
 
                 Intent c = new Intent(this, typeof(MainActivity));
                 StartActivity(c);
-            }
-            
+            }            
+        }
+        private void TextColor()
+        {
+            TextPaint paint = forgotTextView.Paint;
+            float width = paint.MeasureText(forgotTextView.Text);
+            int[] vs = new int[]
+            {
+                Color.ParseColor("#5E07A6"),
+                Color.ParseColor("#5E07A6"),
+                Color.ParseColor("#5E07A6"),
+                Color.ParseColor("#28A2F2"),
+                Color.ParseColor("#28A2F2"),
+            };
+            Shader textShader = new LinearGradient(0, 0, width, forgotTextView.TextSize, vs, null, Shader.TileMode.Clamp);
+            forgotTextView.Paint.SetShader(textShader);
         }
     }
 }

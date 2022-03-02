@@ -389,6 +389,10 @@ C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\dr
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\shape.xml
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\drawable\gradient.xml
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\drawable\design.xml
+C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\drawable\bgimg.png
+C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\drawable\ic_mail.xml
+C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\drawable\ic_key.xml
+C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\values\dimen.xml
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\uploadflags.txt
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\resolvedassemblies.hash
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\android\assets\Java.Interop.dll
@@ -640,7 +644,4 @@ C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\stamp\
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
-C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\drawable\bgimg.png
-C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\drawable\ic_mail.xml
-C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\res\drawable\drawable\ic_key.xml
 C:\Users\jay.patel\source\repos\splash-screen\splash screen\obj\Debug\110\splash screen.csproj.AssemblyReference.cache
